@@ -1,23 +1,34 @@
-import React, { Component } from 'react';
-import './app.css';
-import ReactImage from './react.png';
+import React, { useEffect, useState } from "react";
+import ReactImage from "./logo.png";
+import styled from "styled-components";
 
-export default class App extends Component {
-  state = { username: null };
+const Wrapper = styled.div`
+  text-align: center;
+  margin-top: 100px;
+`;
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
-  }
+const NameDiv = styled.div`
+  color: #21c6ec;
+  font-size: 30px;
+`;
+const PXImage = styled.img`
+  width: 600px;
+  height: 170px;
+`;
 
-  render() {
-    const { username } = this.state;
-    return (
-      <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [user, setUser] = useState("");
+  useEffect(async () => {
+    const userNameJSON = await fetch("/api/getUsername");
+    const userName = await userNameJSON.json();
+    setUser(userName.username);
+  }, []);
+  return (
+    <Wrapper>
+      <NameDiv>{user ? `Hello ${user}` : "Loading.. please wait!"}</NameDiv>
+      <PXImage src={ReactImage} alt="react" />
+    </Wrapper>
+  );
+};
+
+export default App;
