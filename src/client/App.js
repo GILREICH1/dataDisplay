@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactImage from "./logo.png";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 `;
 
 const NameDiv = styled.div`
-  color: #21c6ec;
+  color: Black;
   font-size: 30px;
 `;
 const PXImage = styled.img`
@@ -17,15 +17,9 @@ const PXImage = styled.img`
 `;
 
 const App = () => {
-  const [user, setUser] = useState("");
-  useEffect(async () => {
-    const userNameJSON = await fetch("/api/getUsername");
-    const userName = await userNameJSON.json();
-    setUser(userName.username);
-  }, []);
   return (
     <Wrapper>
-      <NameDiv>{user ? `Hello ${user}` : "Loading.. please wait!"}</NameDiv>
+      <NameDiv>{`Hello Candidate`}</NameDiv>
       <PXImage src={ReactImage} alt="react" />
     </Wrapper>
   );
