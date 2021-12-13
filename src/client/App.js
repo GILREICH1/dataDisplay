@@ -12,10 +12,6 @@ const NameDiv = styled.div`
   color: Black;
   font-size: 30px;
 `;
-const PXImage = styled.img`
-  width: 600px;
-  height: 170px;
-`;
 
 const App = () => {
   const [events, setEvents] = React.useState([]);
@@ -28,8 +24,8 @@ const App = () => {
 
   return (
     <Wrapper>
-      <NameDiv>{`Hello Candidate`}</NameDiv>
-      {events.length > 0 && <Table events={events} />}
+      <NameDiv>Web Events</NameDiv>
+      {events.length > 0 ? <Table events={events} /> : <h1>Loading...</h1>}
     </Wrapper>
   );
 };
