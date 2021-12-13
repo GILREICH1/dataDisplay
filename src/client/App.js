@@ -1,6 +1,7 @@
-import React from "react";
-import ReactImage from "./logo.png";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import Table from "./Table";
+import { SERVER_URL } from "./constant";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -17,10 +18,18 @@ const PXImage = styled.img`
 `;
 
 const App = () => {
+  const [events, setEvents] = React.useState([]);
+
+  useEffect(() => {
+    fetch(`${SERVER_URL}/events`)
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <Wrapper>
       <NameDiv>{`Hello Candidate`}</NameDiv>
-      <PXImage src={ReactImage} alt="react" />
+      <Table events={events} />
     </Wrapper>
   );
 };
