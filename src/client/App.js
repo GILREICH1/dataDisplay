@@ -14,17 +14,21 @@ const Title = styled.h1`
 
 const App = () => {
   const [events, setEvents] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     fetch(`${SERVER_URL}/events`)
       .then((data) => data.json())
-      .then((data) => setEvents(data));
+      .then((data) => {
+        setEvents(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <Wrapper>
       <Title>Web Events</Title>
-      {events.length > 0 ? <Table events={events} /> : <h3>Loading...</h3>}
+      {isLoading ? <h3>Loading...</h3> : <Table events={events} />}
     </Wrapper>
   );
 };
