@@ -3,6 +3,8 @@ const axios = require("axios").default;
 
 async function getEvents(req, res) {
   try {
+    const now = new Date();
+    console.log({ timeOfRequest: now, requestIP: req.ip });
     const response = await axios.get(endpoint);
     const dataResponse = response.data;
     res.status(200).send(dataResponse);
