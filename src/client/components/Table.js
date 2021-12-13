@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CheckBox } from "./CheckBoxContainer";
 import FilterForm from "./FilterForm";
 import Row from "./Row";
+import TableHeaders from "./TableHeaders";
 
 const RowDiv = styled.div`
   display: grid;
@@ -20,10 +21,15 @@ const Table = ({ events }) => {
     setFilteredEvents(events);
   }, []);
 
+  const headers = Object.keys(events[0]);
+
   return (
     <>
       <FilterForm events={events} setFilteredEvents={setFilteredEvents} />
       <CheckBox events={events} setFilteredEvents={setFilteredEvents} />
+      <RowDiv>
+        <TableHeaders headers={headers} />
+      </RowDiv>
       <RowDiv>
         {filteredEvents.map((event) => (
           <Row key={`${event.timestamp}_${event.ip}`} event={event} />
