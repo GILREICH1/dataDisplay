@@ -23,13 +23,13 @@ const App = () => {
   useEffect(() => {
     fetch(`${SERVER_URL}/events`)
       .then((data) => data.json())
-      .then((data) => console.log(data));
+      .then((data) => setEvents(data));
   }, []);
 
   return (
     <Wrapper>
       <NameDiv>{`Hello Candidate`}</NameDiv>
-      <Table events={events} />
+      {events.length > 0 && <Table events={events} />}
     </Wrapper>
   );
 };
