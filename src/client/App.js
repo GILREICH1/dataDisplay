@@ -8,9 +8,8 @@ const Wrapper = styled.div`
   margin-top: 100px;
 `;
 
-const NameDiv = styled.div`
+const Title = styled.h1`
   color: Black;
-  font-size: 30px;
 `;
 
 const App = () => {
@@ -24,8 +23,8 @@ const App = () => {
 
   return (
     <Wrapper>
-      <NameDiv>Web Events</NameDiv>
-      {events.length > 0 ? <Table events={events} /> : <h1>Loading...</h1>}
+      <Title>Web Events</Title>
+      {events.length > 0 ? <Table events={events} /> : <h3>Loading...</h3>}
     </Wrapper>
   );
 };
