@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { CheckBox } from "./CheckBoxContainer";
 import Row from "./Row";
 
 const RowDiv = styled.div`
@@ -8,35 +9,19 @@ const RowDiv = styled.div`
   grid-column-gap: 4px;
   grid-row-gap: 4px;
   border: 2px solid black;
+  margin-top: 5px;
 `;
 
-const onlyBlacklisted = (events) => events.filter((event) => event.blacklisted);
-
 const Table = ({ events }) => {
-  const [blackListFilter, setBlackListFilter] = React.useState(false);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
 
   React.useEffect(() => {
-    if (blackListFilter) {
-      setFilteredEvents(onlyBlacklisted(events));
-    } else {
-      setFilteredEvents(events);
-    }
-  }, [blackListFilter]);
+    setFilteredEvents(events);
+  }, []);
 
   return (
     <>
-      <label>
-        <input
-          type="checkbox"
-          onChange={(e) => {
-            console.log(blackListFilter);
-            setBlackListFilter(e.target.checked);
-          }}
-          checked={!!blackListFilter}
-        />
-        <span>Show Only BlackListed</span>
-      </label>
+      <CheckBox events={events} setFilteredEvents={setFilteredEvents} />
       <RowDiv>
         {filteredEvents.map((event) => (
           <Row key={`${event.timestamp}_${event.ip}`} event={event} />

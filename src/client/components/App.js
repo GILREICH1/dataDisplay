@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import Table from "./Table";
-import { SERVER_URL } from "./constant";
+import { SERVER_URL } from "../constant";
 
 const Wrapper = styled.div`
   text-align: center;
   margin-top: 100px;
+  padding: 5px;
 `;
 
 const Title = styled.h1`
