@@ -15,7 +15,7 @@ const RowDiv = styled.div`
   margin-top: 5px;
 `;
 
-const Table = ({ events }) => {
+const DataDisplay = ({ events }) => {
   const [filteredEvents, setFilteredEvents] = React.useState([]);
 
   React.useEffect(() => {
@@ -40,4 +40,4 @@ const Table = ({ events }) => {
     </>
   );
 };
-export default Table;
+export default DataDisplay;

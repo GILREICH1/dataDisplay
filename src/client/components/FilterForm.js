@@ -21,6 +21,7 @@ const FilterForm = ({ setFilteredEvents, events }) => {
 
   return (
     <form onChange={onChange}>
+      <label>Search By Domain</label>
       <input type="text"></input>
     </form>
   );

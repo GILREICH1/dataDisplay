@@ -21,7 +21,6 @@ const getPageViews = (events) => {
 };
 
 const Chart = ({ events }) => {
-  // TODO memoize
   const pageViews = getPageViews(events);
 
   return (
@@ -29,7 +28,7 @@ const Chart = ({ events }) => {
       <Line type="monotone" dataKey="views" stroke="#8884d8" />
       <CartesianGrid stroke="#ccc" />
       <XAxis dataKey="time" />
-      <YAxis />
+      <YAxis dataKey="views" />
     </LineChart>
   );
 };

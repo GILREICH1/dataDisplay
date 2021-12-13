@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Table from "./Table";
+import DataDisplay from "./DataDisplay";
 import { SERVER_URL } from "../constant";
 
 const Wrapper = styled.div`
@@ -29,7 +29,7 @@ const App = () => {
   return (
     <Wrapper>
       <Title>Web Events</Title>
-      {isLoading ? <h3>Loading...</h3> : <Table events={events} />}
+      {isLoading ? <h3>Loading...</h3> : <DataDisplay events={events} />}
     </Wrapper>
   );
 };
