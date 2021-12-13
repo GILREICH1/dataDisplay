@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CheckBox } from "./CheckBoxContainer";
+import FilterForm from "./FilterForm";
 import Row from "./Row";
 
 const RowDiv = styled.div`
@@ -21,6 +22,7 @@ const Table = ({ events }) => {
 
   return (
     <>
+      <FilterForm events={events} setFilteredEvents={setFilteredEvents} />
       <CheckBox events={events} setFilteredEvents={setFilteredEvents} />
       <RowDiv>
         {filteredEvents.map((event) => (
